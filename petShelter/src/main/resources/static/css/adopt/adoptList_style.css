@@ -1,0 +1,93 @@
+/* 리스트 헤더 */
+.adopt_list_header{
+   width: 100%;
+    height: 200px;
+    background-color: #f7f6f5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    position: relative;
+}
+.adopt_list_nav{
+   	position: absolute;
+    top: 10px;
+    left: 27%;
+}
+
+/* 리스트 */
+.list_count{
+    padding: 20px 0px;
+    width: 70%;
+    margin: auto;
+    margin-top: 5%;
+}
+.list_count>span {
+	font-size: 24px;
+}
+.list_count>span>b{
+	color: #007bff;
+} 
+
+.adopt_list_area{
+	width: 70%;
+	margin: auto;
+	display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    flex: 0 0 calc(25% - 20px);
+    box-sizing: border-box;
+}
+.card>img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+.card_content {
+    padding: 15px;
+}
+.card_content>h2 {
+    text-align: center; 
+    font-size: 24px;
+}
+.card_content>span {
+    margin: 0;
+    color: #797676;
+    font-size: 18px;
+}
+.card:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+/* 페이징 처리 */
+.pagingArea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+}
+.pagingArea a, .pagingArea span {
+    margin: 0 5px;
+    padding: 8px 12px;
+    border: 2px solid #001F3F;  
+    border-radius: 5px;
+    color: black;
+    transition: background-color 0.3s, color 0.3s;
+}
+.pagingArea span {
+    background-color: #001F3F;
+    color: white;
+}
+.pagingArea a:hover {
+    background-color: white;
+    color: #001F3F;
+}
