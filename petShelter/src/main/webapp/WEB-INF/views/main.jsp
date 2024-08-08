@@ -11,22 +11,6 @@
 	<%@include file="/WEB-INF/views/common/header.jsp" %>
 	
 	
-	
-	
-	<h3>강성현 바보</h3>
-	<h3>강성현 바보</h3>
-	<h3>강성현 바보</h3>
-	<h3>강성현 바보</h3>
-	<h3>강성현 바보</h3>
-	<h3>강성현 바보</h3>
-	<h3>강성현 바보</h3>
-	<h3>강성현 바보</h3>
-	<h3>강성현 바보</h3>
-	<h3>강성현 바보</h3>
-	<h3>강성현 바보</h3>
-	<h3>강성현 바보</h3>
-	
-	
 	<%@include file="common/footer.jsp"%>
 	
 	
