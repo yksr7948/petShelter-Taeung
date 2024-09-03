@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="adoptMapper">
+
+	<!-- 신청서 작성 -->
+	<insert id="insertApplication" parameterType="Application">
+		INSERT INTO ADOPT_APPLICATION(APPLICATION_NO,
+									  MEMBER_NO,
+                                      ANIMAL_NO,
+                                      ANIMAL_NAME,
+									  MEMBER_NAME,
+                                      PHONE,
+                                      EMAIL,
+                                      REASON,
+                                      HAS_PET,
+                                      ADOPT_EXP)
+                               VALUES(SEQ_APP.NEXTVAL, 
+                                      1, 
+                                      #{animalNo}, 
+                                      #{animalName}, 
+                                      #{memberName}, 
+                                      #{phone}, 
+                                      #{email}, 
+                                      #{reason}, 
+                                      #{hasPet}, 
+                                      #{adoptExp})
+	</insert>
+	
+	<!-- 후기 게시글 번호 추출 -->
+	<select id="selectReviewNo" resultType="_int">
+		SELECT SEQ_AFT.NEXTVAL reviewNo
+		FROM DUAL
+	</select>
+	
+	<!-- 후기 게시글 저장 -->
+	<insert id="insertReview" parameterType="AdoptReview">
+		INSERT INTO ADOPT_REVIEW(REVIEW_NO,
+								 MEMBER_NO,
+								 REVIEW_TITLE,
+								 REVIEW_CONTENT)
+						  VALUES(#{reviewNo},
+						  		 1,
+						  		 #{reviewTitle},
+						  		 #{reviewContent})						
+	</insert>
+	
+	<!-- 썸네일 저장 -->
+	<insert id="insertAttachment" parameterType="AdoptAttachment">
+		INSERT INTO ADOPT_ATTACHMENT(FILE_NO,
+                                     REVIEW_NO,
+                                     ORIGIN_NAME,
+                                     CHANGE_NAME,
+                                     FILE_PATH)
+                          	  VALUES(SEQ_ADO_ATT.NEXTVAL,
+                                     #{reviewNo},
+                                     #{originName},
+                                     #{changeName},
+                                     #{filePath})
+	</insert>
+</mapper>
