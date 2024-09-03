@@ -6,28 +6,35 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <!-- Popper JS -->
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <!-- Latest compiled JavaScript -->
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/alertify.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/alertify.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+<!-- include summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/common/header_style.css">
 
 </head>
 <body>
-    <header>
+
+	<c:if test="${not empty msg }">
+		<script>
+			alert("${msg}");
+		</script>
+		<c:remove var="msg"/>
+	</c:if>
+	
+	<header>
         <div class="hbody">
             <div class="nav">
                 <div class="logo">
@@ -38,8 +45,8 @@
                         <li>
                             <p>유기동물 관련</p>
                             <div class="submenu">
+                                <h1>유기동물 관련</h1>
                                 <ul>
-                                    <h1>유기동물 관련</h1>
                                     <li><a href="#">유기 관련 1</a></li>
                                     <li><a href="#">유기 관련 2</a></li>
                                 </ul>
@@ -48,18 +55,19 @@
                         <li>
                             <p>입양관련</p>
                             <div class="submenu">
+								<h1>입양 관련</h1>
                                 <ul>
-                                    <h1>입양 관련</h1>
-                                    <li><a href="${pageContext.request.contextPath}/adopt/list.al">입양 대상 동물</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/adopt/animalList.al">입양 대상 동물</a></li>
                                     <li><a href="#">입양 안내</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/adopt/reviewList.ar">입양 후기</a></li>
                                 </ul>
                             </div>
                         </li>
                         <li>
                             <p>분양관련</p>
                             <div class="submenu">
+                                <h1>분양 관련</h1>
                                 <ul>
-                                    <h1>분양 관련</h1>
                                     <li><a href="#">분양 관련 1</a></li>
                                     <li><a href="#">분양 관련 2</a></li>
                                 </ul>
@@ -68,8 +76,8 @@
                         <li>
                             <p>센터찾기</p>
                             <div class="submenu">
+                                <h1>센터 찾기</h1>
                                 <ul>
-                                    <h1>센터 찾기</h1>
                                     <li><a href="#">센터 찾기 1</a></li>
                                     <li><a href="#">센터 찾기 2</a></li>
                                 </ul>
@@ -78,8 +86,8 @@
                         <li>
                             <p>커뮤니티</p>
                             <div class="submenu">
+                                <h1>커뮤니티</h1>
                                 <ul>
-                                    <h1>커뮤니티</h1>
                                     <li><a href="#">커뮤니티 1</a></li>
                                     <li><a href="#">커뮤니티 2</a></li>
                                 </ul>
@@ -94,5 +102,17 @@
             </div>
         </div>
     </header>
+    
+    <!-- 사이드 바 -->
+	<div class="sideBar">
+		<div class="survey" onclick="survey();">
+			<img alt="" src="${pageContext.request.contextPath}/img/common/survey-icon.png"> <br>
+			<span>테스트</span>
+		</div>
+	</div>
+	<div class="tothetop" onclick="tothetop();">TOP</div>
+	
+	<!-- 사이드바 js -->
+	<script src="${pageContext.request.contextPath}/js/common/sidebar.js"></script>
 </body>
 </html>

@@ -1,0 +1,67 @@
+/* 리스트 헤더 */
+.adopt_header {
+	width: 100%;
+	height: 200px;
+	background-color: #f4f2ee;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	margin-bottom: 5%;
+}
+.adopt_nav {
+	position: absolute;
+	top: 10px;
+	left: 27%;
+}
+
+.review_insert_header{
+	text-align: center;
+	border-bottom: 2px solid black;
+	padding-bottom: 5%;
+}
+
+/* 테이블 */
+.review-table {
+    width: 100%;
+    max-width: 1200px;
+    border-collapse: collapse;
+    margin: 5% auto;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.review-table th,
+.review-table td {
+    padding: 12px 15px;
+    border: 1px solid #dddddd;
+}
+
+.review-table th {
+    background-color: #001F3F;
+    color: #ffffff;
+    text-align: center;
+    width: 150px;
+    font-size: 24px;
+}
+
+.review-table td {
+    background-color: #f9f9f9;
+	font-size: 21px;
+}
+
+.review-table input[type="text"],
+.review-table input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.review-table input[type="text"]:focus,
+.review-table input[type="file"]:focus {
+    border-color: #001F3F;
+    outline: none;
+}
