@@ -35,24 +35,20 @@
 		</section>
 
 		<section class="review_list">
-			
-			<article class="review">
-				<div class="review_content">
-		            <h2 class="review_title">두 번째 입양 후기</h2>
-		            <p class="review_info">작성자: yksr7948 | 2024-08-23</p>
-		            <p class="review_excerpt">이 강아지를 입양하게 되어 정말 행복해요...</p>
-		        </div>
-				<img src="${pageContext.request.contextPath }/img/survey/image-10.png" class="review_thumbnail">
-			</article>
-			
-			<article class="review">
-				<div class="review_content">
-		            <h2 class="review_title">첫 번째 입양 후기</h2>
-		            <p class="review_info">작성자: admin | 2024-08-23</p>
-		            <p class="review_excerpt">요즘 두리는 잘 지내고 있어요 그리고...</p>
-		        </div>
-				<img src="${pageContext.request.contextPath }/img/survey/image-9.png" class="review_thumbnail">
-			</article>
+			<c:forEach items="${reviewList }" var="review">
+				<article class="review">
+					<div class="review_content">
+			            <h2 class="review_title">${review.reviewTitle }</h2>
+			            <p class="review_info">작성자 : ${review.memberNo } | ${review.createDate }</p>
+			            <p class="review_excerpt">${review.reviewIntro }</p>
+			        </div>
+			        <c:forEach items="${reviewThumbList }" var="reviewThumb">
+						<c:if test="${review.reviewNo == reviewThumb.reviewNo}">
+							<img src="${pageContext.request.contextPath }/uploadFiles/${reviewThumb.changeName}" class="review_thumbnail">
+						</c:if>		        
+			        </c:forEach>
+				</article>
+			</c:forEach>
 
 		</section>
 		

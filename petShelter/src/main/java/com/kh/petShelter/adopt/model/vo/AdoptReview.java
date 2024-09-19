@@ -13,6 +13,7 @@ public class AdoptReview {
 	private int reviewNo;
 	private String memberNo;
 	private String reviewTitle;
+	private String reviewIntro;
 	private String reviewContent;
 	private int count;
 	private Date createDate;
