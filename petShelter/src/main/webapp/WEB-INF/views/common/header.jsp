@@ -60,8 +60,8 @@
                             <div class="submenu">
                                 <ul>
                                     <h1>분양 관련</h1>
-                                    <li><a href="#">분양 관련 1</a></li>
-                                    <li><a href="#">분양 관련 2</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/enter/list.en">분양 게시판</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/enter/startQna">동물 추천</a></li>
                                 </ul>
                             </div>
                         </li>
