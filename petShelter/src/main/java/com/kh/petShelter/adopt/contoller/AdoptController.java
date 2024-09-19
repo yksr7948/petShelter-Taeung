@@ -32,6 +32,8 @@ import com.kh.petShelter.adopt.model.vo.AdoptAttachment;
 import com.kh.petShelter.adopt.model.vo.AdoptImg;
 import com.kh.petShelter.adopt.model.vo.AdoptReview;
 import com.kh.petShelter.adopt.model.vo.Application;
+import com.kh.petShelter.adopt.model.vo.PageInfo;
+import com.kh.petShelter.common.template.Pagination;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -43,6 +45,7 @@ public class AdoptController {
 	private AdoptService adoptService;
 	
 	public static final String SERVICEKEY = "7842697a62796b733634444d425966";
+	private String fileRoot = new File("src/main/resources/static/uploadFiles/").getAbsolutePath();
 	
 	//	------------------------------ 입양 동물 관련 ------------------------------
 	
@@ -273,7 +276,20 @@ public class AdoptController {
 	
 	// 입양 후기페이지로 이동
 	@GetMapping("reviewList.ar")
-	public String adoptReviewList(@RequestParam(value = "currentPage", defaultValue = "1") int currentPage) {
+	public String adoptReviewList(@RequestParam(value = "currentPage", defaultValue = "1") int currentPage, Model model) {
+		
+		int reviewCount = adoptService.reviewCount();
+		int pageLimit = 10;
+		int boardLimit = 5;
+		
+		PageInfo pi = Pagination.getPageInfo(reviewCount, currentPage, pageLimit, boardLimit);
+		
+		ArrayList<AdoptReview> reviewList = adoptService.selectReviewList(pi);
+		ArrayList<AdoptAttachment> reviewThumbList = adoptService.selectReviewThumbList();
+		
+		model.addAttribute("reviewList", reviewList);
+		model.addAttribute("reviewThumbList", reviewThumbList);
+		model.addAttribute("pi", pi);
 		
 		return "adopt/adoptReviewList";
 	}
@@ -363,7 +379,7 @@ public class AdoptController {
 			att.setReviewNo(reviewNo);
 			att.setOriginName(reviewThumb.getOriginalFilename());
 			att.setChangeName(thumb_changeName);
-			att.setFilePath(session.getServletContext().getRealPath("/resources/uploadFiles/"));
+			att.setFilePath(fileRoot);
 			
 			int attResult = adoptService.insertAttachment(att);
 			
@@ -391,10 +407,9 @@ public class AdoptController {
 
 		String savedFileName = UUID.randomUUID() + extension;
 		
-		String fileRoot = session.getServletContext().getRealPath("/resources/uploadFiles/");
 		try {
 			//7.경로와 수정 파일명을 합쳐서 파일 업로드 처리하기
-			multipartFile.transferTo(new File(fileRoot+savedFileName));
+			multipartFile.transferTo(new File(fileRoot+"/"+savedFileName));
 			
 		} catch (IllegalStateException | IOException e) {
 			// TODO Auto-generated catch block

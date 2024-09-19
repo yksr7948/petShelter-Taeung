@@ -33,6 +33,10 @@
 						<td><input type="text" id="review_title" name="reviewTitle" required></td>
 					</tr>
 					<tr>
+						<th>소개글</th>
+						<td><input type="text" id="review_intro" name="reviewIntro" required></td>
+					</tr>
+					<tr>
 						<th>썸네일</th>
 						<td><input type="file" id="review_attachment" name="reviewThumb" required></td>
 					</tr>
