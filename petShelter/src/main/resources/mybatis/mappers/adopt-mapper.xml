@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="adoptMapper">
+
+	<!-- 입양 후기 ResultMap -->
+	<resultMap type="AdoptReview" id="reviewResultSet">
+		<result column="REVIEW_NO" property="reviewNo"/>
+		<result column="MEMBER_NO" property="memberNo"/>
+		<result column="REVIEW_TITLE" property="reviewTitle"/>
+		<result column="REVIEW_CONTENT" property="reviewContent"/>
+		<result column="REVIEW_INTRO" property="reviewIntro"/>
+		<result column="COUNT" property="count"/>
+		<result column="CREATE_DATE" property="createDate"/>
+		<result column="UPDATE_DATE" property="modifyDate"/>
+		<result column="STATUS" property="status"/>
+	</resultMap>
+	
+	<!-- 입양 후기 썸네일 ResultMap -->
+	<resultMap type="AdoptAttachment" id="reviewThumbResultSet">
+		<result column="FILE_NO" property="fileNo"/>
+		<result column="REVIEW_NO" property="reviewNo"/>
+		<result column="ORIGIN_NAME" property="originName"/>
+		<result column="CHANGE_NAME" property="changeName"/>
+		<result column="FILE_PATH" property="filePath"/>
+		<result column="STATUS" property="status"/>
+	</resultMap>
+
+	<!-- 신청서 작성 -->
+	<insert id="insertApplication" parameterType="Application">
+		INSERT INTO ADOPT_APPLICATION(APPLICATION_NO,
+									  MEMBER_NO,
+                                      ANIMAL_NO,
+                                      ANIMAL_NAME,
+									  MEMBER_NAME,
+                                      PHONE,
+                                      EMAIL,
+                                      REASON,
+                                      HAS_PET,
+                                      ADOPT_EXP)
+                               VALUES(SEQ_APP.NEXTVAL, 
+                                      1, 
+                                      #{animalNo}, 
+                                      #{animalName}, 
+                                      #{memberName}, 
+                                      #{phone}, 
+                                      #{email}, 
+                                      #{reason}, 
+                                      #{hasPet}, 
+                                      #{adoptExp})
+	</insert>
+	
+	<!-- 후기 게시글 전체 개수 조회 -->
+	<select id="reviewCount" resultType="_int">
+		SELECT COUNT(*) 
+		FROM ADOPT_REVIEW
+		WHERE STATUS = 'Y'
+	</select>
+	
+	<!-- 후기 게시글 조회 -->
+	<select id="selectReviewThumbList" resultMap="reviewThumbResultSet">
+		SELECT * 
+		FROM ADOPT_ATTACHMENT
+		WHERE STATUS = 'Y'
+	</select>
+	
+	<!-- 후기 게시글 썸네일 조회 -->
+	<select id="selectReviewList" parameterType="string" resultMap="reviewResultSet">
+		SELECT * 
+		FROM ADOPT_REVIEW
+		WHERE STATUS = 'Y'
+		ORDER BY CREATE_DATE DESC
+	</select>
+	<!-- 후기 게시글 번호 추출 -->
+	<select id="selectReviewNo" resultType="_int">
+		SELECT SEQ_AFT.NEXTVAL reviewNo
+		FROM DUAL
+	</select>
+	
+	<!-- 후기 게시글 저장 -->
+	<insert id="insertReview" parameterType="AdoptReview">
+		INSERT INTO ADOPT_REVIEW(REVIEW_NO,
+								 MEMBER_NO,
+								 REVIEW_TITLE,
+								 REVIEW_INTRO,
+								 REVIEW_CONTENT)
+						  VALUES(#{reviewNo},
+						  		 1,
+						  		 #{reviewTitle},
+						  		 #{reviewIntro},
+						  		 #{reviewContent})						
+	</insert>
+	
+	<!-- 썸네일 저장 -->
+	<insert id="insertAttachment" parameterType="AdoptAttachment">
+		INSERT INTO ADOPT_ATTACHMENT(FILE_NO,
+                                     REVIEW_NO,
+                                     ORIGIN_NAME,
+                                     CHANGE_NAME,
+                                     FILE_PATH)
+                          	  VALUES(SEQ_ADO_ATT.NEXTVAL,
+                                     #{reviewNo},
+                                     #{originName},
+                                     #{changeName},
+                                     #{filePath})
+	</insert>
+</mapper>
