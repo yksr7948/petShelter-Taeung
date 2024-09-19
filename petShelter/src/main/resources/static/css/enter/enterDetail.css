@@ -1,0 +1,291 @@
+/* 전체 컨테이너 */
+.enter_detail_container {
+    width: 70%;
+    margin: auto;
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 제목 스타일 */
+.enter_detail_container h1 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+/* 컨텐츠 래퍼 */
+.content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+/* 왼쪽 이미지 섹션 */
+.image-container {
+    flex: 1;  /* 반반 크기 조절 */
+    text-align: center;
+    margin-right: 20px;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 오른쪽 게시물 내용 섹션 */
+.enter_content {
+    flex: 1;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+    white-space: pre-wrap;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* 공간을 상단과 하단에 배치 */
+}
+
+/* 게시물 내용 섹션 */
+.enter_text {
+    flex-grow: 1; /* 글 내용이 위쪽 공간을 채우도록 설정 */
+    margin-bottom: 20px;
+}
+
+/* 댓글 섹션 */
+.comment_section {
+    flex-grow: 1; /* 댓글 섹션이 위쪽 공간을 채우도록 설정 */
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    display: flex; /* Flexbox를 사용 */
+    flex-direction: column; /* 세로 방향 정렬 */
+    justify-content: flex-end; /* 전체 공간을 차지하도록 설정 */
+}
+
+/* 댓글 목록 */
+.comment_list {
+    overflow-y: auto;
+    margin-bottom: 5px; /* 댓글 목록과 폼 사이의 여백을 줄임 */
+    flex-grow: 1; /* 댓글 목록이 가능한 모든 공간을 차지하도록 설정 */
+}
+
+.comment_item {
+    margin-bottom: 0;
+    padding: 5px 0;
+    background-color: #f1f1f1;
+    border-radius: 4px;
+    display: flex;
+    align-items: center; /* 수평 정렬 */
+    justify-content: space-between; /* 작성자+내용과 날짜를 양 끝에 배치 */
+}
+
+/* 댓글 작성자 스타일 */
+.comment_author {
+    font-weight: bold;
+    color: #333;
+    margin-right: 10px; /* 작성자와 댓글 내용 사이에 여백 추가 */
+}
+
+/* 댓글 내용 스타일 */
+.comment_content {
+    color: #555;
+    flex-grow: 1; /* 내용 부분이 가변적으로 공간을 차지하도록 설정 */
+    overflow: hidden;
+}
+
+/* 댓글 날짜 스타일 */
+.comment_date {
+    font-size: 12px;
+    color: #888;
+    margin-left: 10px; /* 내용과 날짜 사이에 여백 추가 */
+}
+
+/* 댓글 작성 폼 */
+.comment_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-top: auto;
+    border-top: 1px solid #ddd; /* 댓글 목록과 폼 사이에 선을 추가 */
+}
+
+.comment_form textarea {
+    width: 100%;
+    height: 60px;
+    margin-bottom: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    resize: none;
+}
+
+.comment_form button {
+    align-self: flex-end; /* 버튼을 오른쪽으로 정렬 */
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.comment_form button:hover {
+    background-color: #0056b3;
+}
+
+/* 액션 섹션 (신청서 보기 버튼과 좋아요 버튼) */
+.action-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+}
+
+/* 신청서 보기 버튼 스타일 */
+#openFormModal {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 0 auto; /* 가운데 정렬 */
+}
+
+#openFormModal:hover {
+    background-color: #0056b3;
+}
+
+/* 좋아요 버튼 섹션 */
+.like-section {
+    display: flex;
+    justify-content: flex-end; /* 오른쪽 끝에 배치 */
+    margin-top: 20px;
+}
+
+/* 좋아요 버튼 스타일 */
+#like-button {
+    font-size: 16px;
+    background-color: #FF69B4; /* 핑크색 */
+    color: white;
+    border: none;
+    border-radius: 50px; /* 둥근 모양 */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#like-button i {
+    margin-right: 5px;
+}
+
+#like-button:hover {
+    background-color: #ff85c0; /* 밝은 핑크색 */
+}
+
+/* 좋아요 수 스타일 */
+.like-count {
+    font-size: 16px;
+    color: #FF69B4;
+    margin-left: 10px;
+}
+
+/* 모달 창 스타일 */
+.modal {
+    display: none; /* 기본적으로 숨김 */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* 모달 닫기 버튼 */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 신청서 폼 스타일 */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group p {
+    margin: 0;
+    padding: 8px 10px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    color: #555;
+}
+
+/* 슬라이드 전환 버튼 스타일 */
+.toggle_button {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #ddd;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.toggle_button:hover {
+    background-color: #bbb;
+}

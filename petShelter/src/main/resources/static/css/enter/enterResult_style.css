@@ -1,0 +1,103 @@
+/* 전체 배경과 폰트 스타일 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+/* 제목 스타일 */
+h1 {
+    text-align: center;
+    color: #4CAF50;
+    font-size: 48px;  /* 제목 크기 확대 */
+    margin-bottom: 70px;  /* 제목과 내용 사이의 간격 추가 */
+    font-weight: bold;
+}
+
+/* 동물 리스트 스타일 */
+.animal-list {
+    display: flex;
+    justify-content: center;  /* 아이템이 하나일 경우 중앙에 배치 */
+    flex-wrap: wrap;  /* 여러 아이템일 경우 가로로 나열 */
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+}
+
+/* 동물 아이템 스타일 */
+.animal-item {
+    background-color: #fff;
+    padding: 40px;  /* 패딩을 더 추가하여 카드 내부 여백 확대 */
+    margin: 20px;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    width: 320px;  /* 카드 너비 확대 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.animal-item:hover {
+    transform: scale(1.08);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* 이미지 프레임을 추가하여 액자처럼 보이게 하기 */
+.image-frame {
+    border: 6px solid #4CAF50;
+    padding: 10px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+}
+
+.image-frame img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* 동물 이름 스타일 */
+.animal-item h3 {
+    color: #4CAF50;
+    font-size: 26px;  /* 동물 이름 크기 확대 */
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+/* 동물 정보 스타일 */
+.animal-item p {
+    font-size: 18px;  /* 동물 정보 글씨 크기 확대 */
+    color: #666;
+    margin: 10px 0;
+}
+
+/* 추천 결과가 없을 때 메시지 스타일 */
+.no-results {
+    text-align: center;
+    font-size: 24px;
+    color: #ff5e57;
+    margin-bottom: 30px;
+}
+
+/* 다시하기 버튼 섹션 */
+.retry-section {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* 다시하기 버튼 스타일 */
+.retry-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.retry-button:hover {
+    background-color: #45a049;
+}

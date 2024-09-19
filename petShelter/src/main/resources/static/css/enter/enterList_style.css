@@ -1,0 +1,148 @@
+/* 리스트 헤더 */
+.enter_list_header{
+    width: 100%;
+    height: 200px;
+    background-color: #f7f6f5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    position: relative;
+}
+.enter_list_nav{
+   	position: absolute;
+    top: 10px;
+    left: 27%;
+}
+
+/* 게시글 개수 */
+.enter_list_count{
+    padding: 20px 0px;
+    width: 70%;
+    margin: auto;
+    margin-top: 5%;
+}
+
+/* 지역 필터링 */
+.enter_list_filters {
+    width: 70%;
+    margin: auto;
+    margin-top: 20px;
+    text-align: center;
+}
+.enter_list_filters form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.enter_list_filters label {
+    margin-right: 10px;
+}
+.enter_list_filters select {
+    margin-right: 10px;
+    padding: 5px;
+}
+
+/* 게시글 목록 */
+.enter_list_content {
+    width: 70%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.enter_list_content table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.enter_list_content th, .enter_list_content td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+}
+
+.enter_list_content th {
+    background-color: #f7f7f7;
+    font-weight: bold;
+}
+
+.enter_list_content td {
+    vertical-align: middle;
+}
+
+.enter_list_content tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* 카테고리 링크 스타일 */
+.enter_list_content td a {
+    color: #001F3F;
+    text-decoration: none;
+}
+
+.enter_list_content td a:hover {
+    text-decoration: underline;
+}
+
+/* 페이징 처리 */
+.pagingArea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.pagingArea a, .pagingArea span {
+    margin: 0 5px;
+    padding: 8px 12px;
+    border: 2px solid #001F3F;  
+    border-radius: 5px;
+    color: black;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.pagingArea span {
+    background-color: #001F3F;
+    color: white;
+}
+
+.pagingArea a:hover {
+    background-color: white;
+    color: #001F3F;
+}
+
+/* 글쓰기 버튼 영역 */
+.write_button_area {
+    width: 70%;
+    margin: auto;
+    margin-top: 20px;
+    text-align: right;
+}
+
+.write_button_area button {
+    padding: 10px 20px;
+    background-color: #001F3F;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.write_button_area button:hover {
+    background-color: white;
+    color: #001F3F;
+    border: 2px solid #001F3F;
+}
+
+/*금색 라벨*/
+.new-label {
+    background-color: gold;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2px 5px;
+    border-radius: 3px;
+    margin-left: 10px;
+}
