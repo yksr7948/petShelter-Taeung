@@ -60,4 +60,16 @@ public class AdoptDao {
 		return sqlSession.insert("adoptMapper.insertAttachment", att);
 	}
 
+	// 후기 게시글 상세정보 가져오기
+	public AdoptReview selectReviewDetail(String reviewNo, SqlSessionTemplate sqlSession) {
+
+		return sqlSession.selectOne("adoptMapper.selectReviewDetail", reviewNo);
+	}
+
+	// 조회수 증가
+	public int increaseCount(String reviewNo, SqlSessionTemplate sqlSession) {
+
+		return sqlSession.update("adoptMapper.increaseCount", reviewNo);
+	}
+
 }

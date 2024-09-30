@@ -15,7 +15,7 @@
 		<div class="adopt_nav">
 			<a href="${pageContext.request.contextPath }">Home</a> >
 			 <a href="#">입양</a> >
-			  <a href="#">입양 후기</a>
+			  <a href="${pageContext.request.contextPath }/adopt/reviewList.ar">입양 후기</a>
 		</div>
 		<h1>입양 후기</h1>
 	</div>
@@ -36,20 +36,23 @@
 
 		<section class="review_list">
 			<c:forEach items="${reviewList }" var="review">
-				<article class="review">
+				<article class="review" onclick="location.href='${pageContext.request.contextPath}/adopt/reviewDetail.ar?reviewNo=${review.reviewNo}'">
 					<div class="review_content">
 			            <h2 class="review_title">${review.reviewTitle }</h2>
-			            <p class="review_info">작성자 : ${review.memberNo } | ${review.createDate }</p>
+			            <p class="review_info">
+			            	<img src="${pageContext.request.contextPath}/img/adopt/user-icon.png"> 1 /
+							<img src="${pageContext.request.contextPath}/img/adopt/calendar-icon.png"> ${review.createDate } /
+							<img src="${pageContext.request.contextPath}/img/adopt/eye-icon.png"> ${review.count }
+			            </p>
 			            <p class="review_excerpt">${review.reviewIntro }</p>
 			        </div>
 			        <c:forEach items="${reviewThumbList }" var="reviewThumb">
 						<c:if test="${review.reviewNo == reviewThumb.reviewNo}">
-							<img src="${pageContext.request.contextPath }/uploadFiles/${reviewThumb.changeName}" class="review_thumbnail">
+							<img src="${pageContext.request.contextPath}/resources/uploadFiles/${reviewThumb.changeName}" class="review_thumbnail">
 						</c:if>		        
 			        </c:forEach>
 				</article>
 			</c:forEach>
-
 		</section>
 		
 		<div id="pagingArea">

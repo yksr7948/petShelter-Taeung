@@ -69,7 +69,6 @@
                                 <h1>분양 관련</h1>
                                 <ul>
                                     <li><a href="${pageContext.request.contextPath}/enter/list.en">분양 게시판</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/enter/startQna">동물 추천</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -104,12 +103,6 @@
     </header>
     
     <!-- 사이드 바 -->
-	<div class="sideBar">
-		<div class="survey" onclick="survey();">
-			<img alt="" src="${pageContext.request.contextPath}/img/common/survey-icon.png"> <br>
-			<span>테스트</span>
-		</div>
-	</div>
 	<div class="tothetop" onclick="tothetop();">TOP</div>
 	
 	<!-- 사이드바 js -->

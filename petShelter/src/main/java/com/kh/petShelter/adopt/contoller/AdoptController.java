@@ -35,6 +35,9 @@ import com.kh.petShelter.adopt.model.vo.Application;
 import com.kh.petShelter.adopt.model.vo.PageInfo;
 import com.kh.petShelter.common.template.Pagination;
 
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -45,7 +48,6 @@ public class AdoptController {
 	private AdoptService adoptService;
 	
 	public static final String SERVICEKEY = "7842697a62796b733634444d425966";
-	private String fileRoot = new File("src/main/resources/static/uploadFiles/").getAbsolutePath();
 	
 	//	------------------------------ 입양 동물 관련 ------------------------------
 	
@@ -362,6 +364,7 @@ public class AdoptController {
 	@PostMapping("reviewInsert.ar")
 	public String insertReview(AdoptReview review, MultipartFile reviewThumb, HttpSession session) {
 		
+		
 		//후기 게시글 번호 미리 추출
 		int reviewNo = adoptService.selectReviewNo();
 		
@@ -375,6 +378,7 @@ public class AdoptController {
 			AdoptAttachment att = new AdoptAttachment();
 			
 			String thumb_changeName = saveFile(reviewThumb, session);
+			String fileRoot = session.getServletContext().getRealPath("/resources/uploadFiles/");
 			
 			att.setReviewNo(reviewNo);
 			att.setOriginName(reviewThumb.getOriginalFilename());
@@ -394,6 +398,40 @@ public class AdoptController {
 		return "redirect:/adopt/reviewList.ar";
 	}
 	
+	// 입양후기 게시글 상세보기
+	@GetMapping("reviewDetail.ar")
+	public String DetailReview(String reviewNo, Model model, HttpServletRequest request, HttpServletResponse response) {
+		
+		boolean isViewed = false;
+		Cookie[] cookies = request.getCookies();
+		
+		// 쿠키가 있을 경우 이전에 본 게시물인지 확인
+		if(cookies != null) {
+			for(Cookie cookie : cookies) {
+				if(cookie.getName().equals("viewedReview_" + reviewNo)) {
+					isViewed = true;
+					break;
+				}
+			}
+		}
+		
+		// isViewed false일때 조회수 증가하기
+		if(!isViewed) {
+			// 조회수 증가
+			adoptService.increaseCount(reviewNo);
+			// 쿠키 생성하기
+			Cookie newCookie = new Cookie("viewedReview_" + reviewNo, "true");
+			newCookie.setMaxAge(60 * 60 * 24); // 쿠키 유지 시간
+			response.addCookie(newCookie);
+		}
+		 
+		AdoptReview review = adoptService.selectReviewDetail(reviewNo);
+			
+		model.addAttribute("review", review);
+		
+		return "adopt/adoptReviewDetail";
+	}
+	
 	
 	//------------------------------ 여기까지 입양 후기 ------------------------------
 	
@@ -407,6 +445,7 @@ public class AdoptController {
 
 		String savedFileName = UUID.randomUUID() + extension;
 		
+		String fileRoot = session.getServletContext().getRealPath("/resources/uploadFiles/");
 		try {
 			//7.경로와 수정 파일명을 합쳐서 파일 업로드 처리하기
 			multipartFile.transferTo(new File(fileRoot+"/"+savedFileName));

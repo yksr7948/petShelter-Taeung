@@ -68,4 +68,17 @@ public class AdoptServiceImpl implements AdoptService{
 		return adoptDao.insertAttachment(att, sqlSession);
 	}
 
+	// 후기 게시글 상세정보 가져오기
+	@Override
+	public AdoptReview selectReviewDetail(String reviewNo) {
+		
+		return adoptDao.selectReviewDetail(reviewNo, sqlSession);
+	}
+
+	// 조회수 증가
+	@Override
+	public int increaseCount(String reviewNo) {
+
+		return adoptDao.increaseCount(reviewNo, sqlSession);
+	}
 }
