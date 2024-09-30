@@ -28,7 +28,7 @@
        <!-- 오른쪽 게시물 내용 및 댓글 섹션 -->
         <div class="enter_content" id="enterContent">
             <div class="page enter_text" id="pageContent">
-                <p>${enter.enterContent}</p>
+                <p>${enter.enterContent} z</p>
             </div>
             <div class="page comment_section" id="pageComments" style="display: none;">
                 <h2>댓글</h2>
