@@ -30,4 +30,10 @@ public interface AdoptService {
 	//썸네일 저장
 	int insertAttachment(AdoptAttachment att);
 
+	//후기 게시글 상세정보 가져오기
+	AdoptReview selectReviewDetail(String reviewNo);
+
+	//조회수 증가
+	int increaseCount(String reviewNo);
+
 }

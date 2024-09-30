@@ -93,6 +93,10 @@
   color: #666;
   margin-bottom: 10px;
 }
+.review_info img{
+	margin-bottom: 5px;
+	width: 16px;
+}
 .review_excerpt {
   font-size: 16px;
   color: #333;

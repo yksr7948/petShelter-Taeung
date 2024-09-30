@@ -1,0 +1,45 @@
+/* poster */
+.poster-slider {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 2% auto;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+}
+.poster-slider-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+.poster-slide {
+    min-width: 100%;
+}
+.poster-slide img {
+    width: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+}
+/* 화살표 */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    color: black;
+    border: none;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1;
+    transition: color 0.3s ease;
+}
+.prev {
+    left: 10px;
+}
+.next {
+    right: 10px;
+}
+.prev:hover, .next:hover {
+    color: gray;
+}

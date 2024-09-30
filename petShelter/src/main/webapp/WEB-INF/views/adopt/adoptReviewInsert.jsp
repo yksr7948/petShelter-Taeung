@@ -15,7 +15,7 @@
 		<div class="adopt_nav">
 			<a href="${pageContext.request.contextPath }">Home</a> >
 			 <a href="#">입양</a> >
-			  <a href="#">입양 후기</a>
+			  <a href="${pageContext.request.contextPath }/adopt/reviewList.ar">입양 후기</a>
 		</div>
 		<h1>입양 후기</h1>
 	</div>
