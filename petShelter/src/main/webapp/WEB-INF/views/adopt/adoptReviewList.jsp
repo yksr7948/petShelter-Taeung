@@ -27,7 +27,10 @@
 		</header>
 
 		<section class="filter_area">
-			<input type="text" class="search_bar" placeholder="검색어를 입력하세요...">
+			<form action="${pageContext.request.contextPath}/adopt/searchResult.as" class="search_form" method="get">
+				<input name="searchVal" type="text" class="search_bar" placeholder="검색어를 입력하세요...">
+				<button type="submit" class="search_button">검색</button>
+			</form>
 			<select class="filter">
 				<option value="recent">최신순</option>
 				<option value="popular">인기순</option>

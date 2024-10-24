@@ -432,6 +432,26 @@ public class AdoptController {
 		return "adopt/adoptReviewDetail";
 	}
 	
+	// 검색 결과 조회
+	@GetMapping("searchResult.as")
+	public String searchResult(@RequestParam(value = "currentPage", defaultValue = "1") int currentPage, String searchVal, Model model) {
+		
+		int resultCount = adoptService.resultCount(searchVal);
+		int pageLimit = 10;
+		int boardLimit = 5;
+		
+		PageInfo pi = Pagination.getPageInfo(resultCount, currentPage, pageLimit, boardLimit);
+		
+		ArrayList<AdoptReview> searchList = adoptService.searchResult(searchVal);
+		ArrayList<AdoptAttachment> searchThumList = adoptService.searchThumResult(searchVal);
+		
+		model.addAttribute("reviewList", searchList);
+		model.addAttribute("reviewThumbList", searchThumList);
+		model.addAttribute("pi", pi);
+		
+		return "adopt/adoptReviewList";
+	}
+	
 	
 	//------------------------------ 여기까지 입양 후기 ------------------------------
 	

@@ -59,19 +59,20 @@
 	</select>
 	
 	<!-- 후기 게시글 조회 -->
-	<select id="selectReviewThumbList" resultMap="reviewThumbResultSet">
-		SELECT * 
-		FROM ADOPT_ATTACHMENT
-		WHERE STATUS = 'Y'
-	</select>
-	
-	<!-- 후기 게시글 썸네일 조회 -->
 	<select id="selectReviewList" parameterType="string" resultMap="reviewResultSet">
 		SELECT * 
 		FROM ADOPT_REVIEW
 		WHERE STATUS = 'Y'
 		ORDER BY CREATE_DATE DESC
 	</select>
+	
+	<!-- 후기 게시글 썸네일 조회 -->
+	<select id="selectReviewThumbList" resultMap="reviewThumbResultSet">
+		SELECT * 
+		FROM ADOPT_ATTACHMENT
+		WHERE STATUS = 'Y'
+	</select>
+	
 	<!-- 후기 게시글 번호 추출 -->
 	<select id="selectReviewNo" resultType="_int">
 		SELECT SEQ_AFT.NEXTVAL reviewNo
@@ -117,7 +118,34 @@
 	<!-- 조회수 증가 -->
 	<update id="increaseCount" parameterType="string">
 		UPDATE ADOPT_REVIEW 
-		SET COUNT = COUNT +1 
+		SET COUNT = COUNT + 1 
 		WHERE REVIEW_NO = ${reviewNo}
 	</update>
+	
+	<!-- 검색 결과 개수 조회 -->
+	<select id="resultCount" parameterType="string" resultType="_int">
+		SELECT COUNT(*)
+		FROM ADOPT_REVIEW
+		WHERE REVIEW_TITLE LIKE '%${reviewTitle}%'
+	</select>
+	
+	<!-- 검색 결과 조회 -->
+	<select id="searchResult" parameterType="string" resultMap="reviewResultSet">
+		SELECT * 
+		FROM ADOPT_REVIEW
+		WHERE REVIEW_TITLE LIKE '%${reviewTitle}%'
+	</select>
+	
+	<!-- 검색 결과 썸네일 조회 -->
+	<select id="searchThumResult" parameterType="string" resultMap="reviewThumbResultSet">
+		SELECT REVIEW_NO, 
+			   FILE_NO, 
+			   ORIGIN_NAME, 
+			   CHANGE_NAME, 
+			   FILE_PATH, 
+			   A.STATUS
+		FROM ADOPT_ATTACHMENT A
+		JOIN ADOPT_REVIEW R USING(REVIEW_NO)
+		WHERE REVIEW_TITLE LIKE '%${reviewTitle}%'
+	</select>
 </mapper>

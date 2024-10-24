@@ -81,4 +81,26 @@ public class AdoptServiceImpl implements AdoptService{
 
 		return adoptDao.increaseCount(reviewNo, sqlSession);
 	}
+
+	// 검색 결과 개수 조회
+	@Override
+	public int resultCount(String searchVal) {
+		
+		return adoptDao.resultCount(searchVal, sqlSession);
+	}
+	
+	// 검색 결과 조회
+	@Override
+	public ArrayList<AdoptReview> searchResult(String searchVal) {
+
+		return adoptDao.searchResult(searchVal, sqlSession);
+	}
+
+	// 검색 결과 썸네일 조회
+	@Override
+	public ArrayList<AdoptAttachment> searchThumResult(String searchVal) {
+		
+		return adoptDao.searchThumResult(searchVal, sqlSession);
+	}
+
 }

@@ -36,4 +36,14 @@ public interface AdoptService {
 	//조회수 증가
 	int increaseCount(String reviewNo);
 
+	//검색 결과 개수 조회
+	int resultCount(String searchVal);
+	
+	//검색 결과 조회
+	ArrayList<AdoptReview> searchResult(String searchVal);
+
+	//검색 결과 썸네일 조회
+	ArrayList<AdoptAttachment> searchThumResult(String searchVal);
+
+
 }

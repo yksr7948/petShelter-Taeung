@@ -71,5 +71,23 @@ public class AdoptDao {
 
 		return sqlSession.update("adoptMapper.increaseCount", reviewNo);
 	}
+	
+	// 검색 결과 개수 조회
+	public int resultCount(String searchVal, SqlSessionTemplate sqlSession) {
+		
+		return sqlSession.selectOne("adoptMapper.resultCount", searchVal);
+	}
+
+	// 검색 결과 조회
+	public ArrayList<AdoptReview> searchResult(String searchVal, SqlSessionTemplate sqlSession) {
+
+		return (ArrayList)sqlSession.selectList("adoptMapper.searchResult", searchVal);
+	}
+
+	// 검색 결과 썸네일 조회
+	public ArrayList<AdoptAttachment> searchThumResult(String searchVal, SqlSessionTemplate sqlSession) {
+		
+		return (ArrayList)sqlSession.selectList("adoptMapper.searchThumResult", searchVal);
+	}
 
 }
